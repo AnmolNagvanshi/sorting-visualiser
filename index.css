@@ -1,0 +1,23 @@
+/* .bar {
+    width: 8px;
+    height: 80vh;
+    background-color: blue;
+    margin: 1px;
+} */
+
+
+
+#parent {
+    display: grid;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-end;
+    grid-auto-flow: column;
+    /* grid-template-rows: auto; */
+}
+
+.bar {
+    width: 8px;
+    background-color: blue;
+    margin: 0 1px;
+}
