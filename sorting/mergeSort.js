@@ -4,16 +4,22 @@ export function mergeSort() {
     let barHeights = bars.map(bar => parseInt(bar.style.height.slice(0, -2)));
     let timeModifier = 1;
 
+    // let sortedArray = barHeights.slice().sort((a, b) => a - b);
     console.log(barHeights);
+
     sort(bars, barHeights, 0, barHeights.length - 1);
 
-    time += 1000;
-    setTimeout(() => {
-        console.log(barHeights);
-    }, time);
+    // console.log(barHeights);
+    // console.log(arraysAreEqual(barHeights, sortedArray));
+
+    // time += 1000;
+    // setTimeout(() => {
+    //     console.log(barHeights);
+    // }, time);
+
 }
 
-var time = 0;
+var time = 1;
 
 function sort(bars, barHeights, leftIdx, rightIdx) {
     if(leftIdx >= rightIdx) {
@@ -30,55 +36,72 @@ function merge(bars, barHeights, leftIdx, midIdx, rightIdx) {
     let rightArray = barHeights.slice(midIdx + 1, rightIdx + 1);
     let idx1 = 0, idx2 = 0, barIdx = leftIdx;
 
-    while(idx1 < leftArray.length && idx2 < rightArray.length && barIdx < bars.length) {
-        // highlightBars(bars, leftIdx + idx1, midIdx + 1 + idx2);
-        time += 10;
+    while(idx1 < leftArray.length && idx2 < rightArray.length) {
+        highlightBars(bars[leftIdx + idx1], bars[midIdx + 1 + idx2], time * 10);
+        time++;
         if(leftArray[idx1] <= rightArray[idx2]) {
-            updateHeight(bars, barHeights, barIdx, leftArray, idx1);
-            // unhighlightBars(bars, leftIdx + idx1, midIdx + 1 + idx2);
+            barHeights[barIdx] = leftArray[idx1];
+            updateHeight(bars[barIdx], barHeights[barIdx], time * 10);
+            unhighlightBars(bars[leftIdx + idx1], bars[midIdx + 1 + idx2], time * 10);
             idx1++;            
         } else {
-            updateHeight(bars, barHeights, barIdx, rightArray, idx2);
-            // unhighlightBars(bars, leftIdx + idx1, midIdx + 1 + idx2);
+            barHeights[barIdx] = rightArray[idx2];
+            updateHeight(bars[barIdx], barHeights[barIdx], time * 10);
+            unhighlightBars(bars[leftIdx + idx1], bars[midIdx + 1 + idx2], time * 10);
             idx2++;
         }
         barIdx++;
     }
 
-    while(idx1 < leftArray.length && barIdx < bars.length) {
-        time += 10;
-        updateHeight(bars, barHeights, barIdx, leftArray, idx1);
+    while(idx1 < leftArray.length) {
+        time++;
+        barHeights[barIdx] = leftArray[idx1];
+        updateHeight(bars[barIdx], barHeights[barIdx], time * 10);
         idx1++;
         barIdx++;   
     }
 
-    while(idx2 < rightArray.length && barIdx < bars.length) {
-        time += 10;
-        updateHeight(bars, barHeights, barIdx, rightArray, idx2);
+    while(idx2 < rightArray.length) {
+        time++;
+        barHeights[barIdx] = rightArray[idx2];
+        updateHeight(bars[barIdx], barHeights[barIdx], time * 10);
         idx2++;
         barIdx++;   
     }
 }
 
-function updateHeight(bars, barHeights, barIdx, array, idx) {
-    console.log("time: ", time);
-    // setTimeout(() => {
-        console.log("barIdx: ", barIdx);
-        barHeights[barIdx] = array[idx];
-        bars[barIdx].style.height = barHeights[barIdx] + "vh";
-    // }, time);
+function updateHeight(bar, barHeight, timeDelay) {
+    console.log(timeDelay);
+    setTimeout(() => {
+        // console.log(timeDelay, bar, barHeight);
+        bar.style.height = barHeight + "vh";
+    }, timeDelay);
 }
 
-function highlightBars(bars, idx1, idx2, delay) {
+function highlightBars(bar1, bar2, timeDelay) {
     setTimeout(() => {
-        bars[idx1].style.backgroundColor = "#53EA78";
-        bars[idx2].style.backgroundColor = "#53EA78";
-    }, time);
+        bar1.style.backgroundColor = "#53EA78";
+        bar2.style.backgroundColor = "#53EA78";
+    }, timeDelay);
 }
 
-function unhighlightBars(bars, idx1, idx2, delay) {
+function unhighlightBars(bar1, bar2, timeDelay) {
     setTimeout(() => {
-        bars[idx1].style.backgroundColor = "aqua";
-        bars[idx2].style.backgroundColor = "aqua";
-    }, time);
+        bar1.style.backgroundColor = "blue";
+        bar2.style.backgroundColor = "blue";
+    }, timeDelay);
+}
+
+function arraysAreEqual(arr1, arr2) {
+    if (arr1.length !== arr2.length) {
+        return false;
+    }
+
+    for (let i = 0; i < arr1.length; i++) {
+        if (arr1[i] !== arr2[i]) {
+            return false;
+        }
+    }
+
+    return true;
 }

@@ -2,111 +2,65 @@ export async function insertionSort() {
     let parentDiv = document.getElementById('parent');
     let bars = Array.from(parentDiv.childNodes);
     let barHeights = bars.map(bar => parseInt(bar.style.height.slice(0, -2)));
-    let timeModifier = 1;
+    console.log(barHeights);
+    
+    let time = 1;
+    let MULTIPLIER = 2;
 
     for(let i = 1; i < bars.length; i++) {
-        let selectedItemHeight = barHeights[i];
-        const bar1 = document.getElementById(i.toString());
-        let j = i - 1;
+        const selectedItemHeight = barHeights[i];
+        
+        let j;
+        for(j = i - 1; j >= 0 && barHeights[j] > selectedItemHeight; j--) {            
+            barHeights[j + 1] = barHeights[j];
 
-
-        while(j >= 0 && barHeights[j] > selectedItemHeight) {
-            const bar2 = document.getElementById((j).toString());
-            const bar3 = document.getElementById((j + 1).toString());
-            // timeModifier++;
-
-            // highlightBars(bar1, bar2);
-            // barHeights[j + 1] = barHeights[j];
-            // bar3.style.height = barHeights[j] + "vh";
-            // unhighlightBars(bar1, bar2);
-            
-            await highlightWithDelay(bar1, bars[j], timeModifier);
-            // timeModifier++;
-            await shiftBars(barHeights, j, bars[j + 1], bar1, bars[j], timeModifier);
-           
-            // setTimeout(() => {
-            //     highlightBars(bar1, bar2);
-            // }, timeModifier * 10);
-
-            // timeModifier++;
-
-            j--;
+            highlightBars(bars[i], bars[j], time * MULTIPLIER);
+            time++;
+            updateHeight(bars[j + 1], barHeights[j + 1], time * MULTIPLIER);
+            time++;
+            unhighlightBars(bars[i], bars[j], time * MULTIPLIER);
+            time++;
         }
 
-        // timeModifier++;
-
-        // barHeights[j + 1] = selectedItemHeight;
-        // const barAtInsertPosition = document.getElementById((j + 1).toString());
-        // barAtInsertPosition.style.height = selectedItemHeight + "vh"; 
-        
-        await insertSelectedBarAtCorrectPosition(barHeights, j, selectedItemHeight, timeModifier);
-
+        barHeights[j + 1] = selectedItemHeight;        
+        insertSelectedBarAtCorrectPosition(bars[j + 1], selectedItemHeight, time * MULTIPLIER);
+        time++;
     }
 
-    // console.log(barHeights);
-
-    // timeModifier++;
-    // setTimeout(() => {
-    //     console.log(barHeights);
-    // }, timeModifier * 10);
+    time++;
+    printArray(barHeights, time * MULTIPLIER);
 }
 
-
-function highlightWithDelay(bar1, bar2, timeModifier) {
-    return new Promise((resolve, reject) => {
-        setTimeout(() => {
-            highlightBars(bar1, bar2);
-            resolve();
-        }, timeModifier);
-    });
-
-    // setTimeout(() => {
-    //     highlightBars(bar1, bar2);
-    // }, timeModifier);
-    
+function printArray(barHeights, timeDelay) {
+    setTimeout(() => {
+        console.log("After sorting", barHeights);
+    }, timeDelay);
 }
 
-function shiftBars(barHeights, j, bar3, bar1, bar2, timeModifier) {
-    return new Promise((resolve, reject) => {
-        setTimeout(() => {
-            barHeights[j + 1] = barHeights[j];
-            bar3.style.height = barHeights[j] + "vh";
-            unhighlightBars(bar1, bar2);
-            resolve();
-        }, timeModifier);
-    });
-
-    // setTimeout(() => {
-    //     barHeights[j + 1] = barHeights[j];
-    //     bar3.style.height = barHeights[j] + "vh";
-    //     unhighlightBars(bar1, bar2);
-    // }, timeModifier);
+function updateHeight(bar, barHeight, timeDelay) {
+    setTimeout(() => {
+        bar.style.height = barHeight + "vh";
+        // unhighlightBars(bar1, bar2);
+    }, timeDelay);
 }
 
-function insertSelectedBarAtCorrectPosition(barHeights, j, selectedItemHeight, timeModifier) {
-    return new Promise((resolve, reject) => {
-        setTimeout(() => {
-            barHeights[j + 1] = selectedItemHeight;
-            const barAtInsertPosition = document.getElementById((j + 1).toString());
-            barAtInsertPosition.style.height = selectedItemHeight + "vh";
-            resolve();
-        }, timeModifier);
-    });
-
-    // setTimeout(() => {
-    //     barHeights[j + 1] = selectedItemHeight;
-    //     const barAtInsertPosition = document.getElementById((j + 1).toString());
-    //     barAtInsertPosition.style.height = selectedItemHeight + "vh";
-    // }, timeModifier);
+function insertSelectedBarAtCorrectPosition(bar, barHeight, timeDelay) {
+    setTimeout(() => {
+        bar.style.height = barHeight + "vh";
+    }, timeDelay);
 }
 
-function highlightBars(bar1, bar2) {
-    bar1.style.backgroundColor = "#53EA78";
-    bar2.style.backgroundColor = "#53EA78";
+function highlightBars(bar1, bar2, timeDelay) {
+    setTimeout(() => {
+        bar1.style.backgroundColor = "#53EA78";
+        bar2.style.backgroundColor = "#53EA78";
+    }, timeDelay);
 }
 
-function unhighlightBars(bar1, bar2) {
-    bar1.style.backgroundColor = "aqua";
-    bar2.style.backgroundColor = "aqua";
+function unhighlightBars(bar1, bar2, timeDelay) {
+    setTimeout(() => {
+        bar1.style.backgroundColor = "blue";
+        bar2.style.backgroundColor = "blue";
+    }, timeDelay);
 }
 
