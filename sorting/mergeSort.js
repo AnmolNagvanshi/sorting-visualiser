@@ -1,3 +1,5 @@
+import { updateHeight, highlightBars, unhighlightBars } from "./utility.js";
+
 export function mergeSort() {
     let parentDiv = document.getElementById('parent');
     let bars = Array.from(parentDiv.childNodes);
@@ -68,40 +70,4 @@ function merge(bars, barHeights, leftIdx, midIdx, rightIdx) {
         idx2++;
         barIdx++;   
     }
-}
-
-function updateHeight(bar, barHeight, timeDelay) {
-    console.log(timeDelay);
-    setTimeout(() => {
-        // console.log(timeDelay, bar, barHeight);
-        bar.style.height = barHeight + "vh";
-    }, timeDelay);
-}
-
-function highlightBars(bar1, bar2, timeDelay) {
-    setTimeout(() => {
-        bar1.style.backgroundColor = "#53EA78";
-        bar2.style.backgroundColor = "#53EA78";
-    }, timeDelay);
-}
-
-function unhighlightBars(bar1, bar2, timeDelay) {
-    setTimeout(() => {
-        bar1.style.backgroundColor = "blue";
-        bar2.style.backgroundColor = "blue";
-    }, timeDelay);
-}
-
-function arraysAreEqual(arr1, arr2) {
-    if (arr1.length !== arr2.length) {
-        return false;
-    }
-
-    for (let i = 0; i < arr1.length; i++) {
-        if (arr1[i] !== arr2[i]) {
-            return false;
-        }
-    }
-
-    return true;
 }

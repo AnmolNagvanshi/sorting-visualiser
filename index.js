@@ -2,6 +2,7 @@ import { bubbleSort } from "./sorting/bubbleSort.js";
 import { insertionSort } from "./sorting/insertionSort.js";
 import { mergeSort } from "./sorting/mergeSort.js";
 import { quickSort } from "./sorting/quickSort.js";
+import { heapSort } from "./sorting/heapSort.js";
 
 function generateBars() {
     const parentDiv = document.getElementById("parent");
@@ -15,6 +16,8 @@ function generateBars() {
     bars.forEach((bar) => {
         parentDiv.appendChild(bar);
     });
+
+    console.log("generating");
 }
 
 function createSingleBar(height, id) {
@@ -49,6 +52,10 @@ function main() {
 
     const quickSortButton = document.getElementById('quick-sort-button');
     quickSortButton.addEventListener('click', quickSort);
+
+    const heapSortButton = document.getElementById('heap-sort-button');
+    heapSortButton.addEventListener('click', heapSort);
+
 };
 
 main();

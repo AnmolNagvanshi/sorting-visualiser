@@ -38,7 +38,6 @@ function updateHeight(barHeights, idx, bar1, bar2) {
         let temp = barHeights[idx];
         barHeights[idx] = barHeights[idx + 1];
         barHeights[idx + 1] = temp;
-        // [barHeights[j], barHeights[j + 1]] = [barHeights[j + 1], barHeights[j]];
         bar1.style.height = barHeights[idx] + "vh";
         bar2.style.height = barHeights[idx + 1] + "vh";
     }
