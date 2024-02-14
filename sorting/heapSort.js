@@ -8,6 +8,8 @@ export function heapSort() {
     const bars = Array.from(parentDiv.childNodes);
     const barHeights = bars.map(bar => parseInt(bar.style.height.slice(0, -2)))
 
+    console.log("HeapSort", barHeights);
+
     for(let idx = barHeights.length / 2 - 1; idx >= 0; idx--) {
         maxHeapify(bars, barHeights, idx, barHeights.length);
     }
