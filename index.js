@@ -2,7 +2,7 @@ import { handleSort } from "./sorting/sortController.js";
 
 const MIN_COUNT = 10;
 
-let MAX_COUNT = Math.floor((window.innerWidth - 40) / 12) - 10;
+let MAX_COUNT = Math.floor((window.innerWidth - 40) / 12) - 2;
 
 function generateBars() {
     const parentDiv = document.getElementById("parent");
@@ -52,7 +52,7 @@ function main() {
     window.addEventListener('resize', () => {
         console.log("window resize", window.innerWidth);
         // console.log("Before MAX_COUNT", MAX_COUNT);
-        MAX_COUNT = Math.floor((window.innerWidth - 40) / 12) - 10; 
+        MAX_COUNT = Math.floor((window.innerWidth - 40) / 12) - 2; 
         // console.log("After MAX_COUNT", MAX_COUNT);
 
         let timeoutId = window.setTimeout(function() {}, 0);
