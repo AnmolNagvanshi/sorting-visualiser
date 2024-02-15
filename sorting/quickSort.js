@@ -2,13 +2,14 @@ import { updateHeightTwo, highlightBars, unhighlightBars, swap } from "./utility
 
 export function quickSort(bars, barHeights) {
 
+    time = 1;
     sort(bars, barHeights, 0, bars.length - 1);
     console.log(barHeights);
 
     return time * MULTIPLIER;
 }
 
-var time = 1;
+let time = 1;
 const MULTIPLIER = 10;
 
 function sort(bars, barHeights, leftIdx, rightIdx) {

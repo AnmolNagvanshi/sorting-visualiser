@@ -2,13 +2,15 @@ import { updateHeight, highlightBars, unhighlightBars } from "./utility.js";
 
 export function mergeSort(bars, barHeights) {
     
-    console.log(barHeights);
+    // console.log(barHeights);
+    time = 1;
     sort(bars, barHeights, 0, barHeights.length - 1);
+    console.log("Current time: ", time * MULTIPLIER);
 
     return time * MULTIPLIER;
 }
 
-var time = 1;
+let time = 1;
 const MULTIPLIER = 10;
 
 function sort(bars, barHeights, leftIdx, rightIdx) {

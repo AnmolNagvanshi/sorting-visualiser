@@ -7,6 +7,7 @@
 
 body {
     overflow: hidden;
+    box-sizing: border-box;
 }
 
 .nav {
@@ -46,9 +47,9 @@ body {
     height: 80vh;
     /* margin-bottom: 40px; */
     display: grid;
-    /* gap: 1px; */
+    /* gap: 4px; */
     /* flex-direction: row; */
-    justify-content: center;
+    justify-content: space-between;
     align-items: flex-end;
     grid-auto-flow: column;
     /* grid-template-rows: auto; */
@@ -57,6 +58,7 @@ body {
 .bar {
     width: 8px;
     background-color: blue;
-    margin: 0 2px;
-    /* margin-right: 1px; */
+    /* margin: 0 2px; */
+    margin-right: 4px;
+    /* overflow-wrap: break-word; */
 }

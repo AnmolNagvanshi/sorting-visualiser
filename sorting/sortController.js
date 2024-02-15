@@ -12,12 +12,14 @@ export function handleSort(event) {
     const sortButtons = document.querySelectorAll('.sort-button');
     sortButtons.forEach((button) => {
         button.disabled = true;
-        button.classList.remove('hover');
     });
 
     const parentDiv = document.getElementById('parent');
     const bars = Array.from(parentDiv.childNodes);
     const barHeights = bars.map(bar => parseInt(bar.style.height.slice(0, -2)));
+    
+    console.log("length", barHeights.length);
+    console.log("heights", barHeights);
 
     let timeDelay = 0;
     if(sortFnName === 'bubble')
@@ -35,10 +37,12 @@ export function handleSort(event) {
 
     console.log("timeDelay", timeDelay);
 
+    let timeoutId = window.setTimeout(function() {}, 0);
+    console.log("max_timeout_id sort", timeoutId);
+
     setTimeout(() => {
         sortButtons.forEach((button) => {
             button.disabled = false;
-            button.classList.add('hover');
         });
     }, timeDelay + 500);
 }

@@ -1,11 +1,12 @@
 import { updateHeight, highlightBars, unhighlightBars, swap, printArray } from "./utility.js";
 
-var time = 1;
+let time = 1;
 const MULTIPLE = 2;
 
 export function heapSort(bars, barHeights) {
     
     console.log("HeapSort", barHeights);
+    time = 1;
 
     for(let idx = barHeights.length / 2 - 1; idx >= 0; idx--) {
         maxHeapify(bars, barHeights, idx, barHeights.length);
@@ -32,7 +33,7 @@ export function heapSort(bars, barHeights) {
 
     time++;
     printArray(barHeights, "After Sorting", time * MULTIPLE);
-    
+
     return time * MULTIPLE;
 }
 
