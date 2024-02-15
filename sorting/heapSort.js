@@ -3,11 +3,8 @@ import { updateHeight, highlightBars, unhighlightBars, swap, printArray } from "
 var time = 1;
 const MULTIPLE = 2;
 
-export function heapSort() {
-    const parentDiv = document.getElementById("parent");
-    const bars = Array.from(parentDiv.childNodes);
-    const barHeights = bars.map(bar => parseInt(bar.style.height.slice(0, -2)))
-
+export function heapSort(bars, barHeights) {
+    
     console.log("HeapSort", barHeights);
 
     for(let idx = barHeights.length / 2 - 1; idx >= 0; idx--) {

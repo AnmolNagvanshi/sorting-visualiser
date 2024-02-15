@@ -1,9 +1,7 @@
 import { updateHeight, highlightBars, unhighlightBars } from "./utility.js";
 
-export function mergeSort() {
-    let parentDiv = document.getElementById('parent');
-    let bars = Array.from(parentDiv.childNodes);
-    let barHeights = bars.map(bar => parseInt(bar.style.height.slice(0, -2)));
+export function mergeSort(bars, barHeights) {
+    
     let timeModifier = 1;
 
     // let sortedArray = barHeights.slice().sort((a, b) => a - b);

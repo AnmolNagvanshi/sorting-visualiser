@@ -1,9 +1,7 @@
-import { updateHeight, highlightBars, unhighlightBars } from "./utility.js";
+import { updateHeight, highlightBars, unhighlightBars, printArray } from "./utility.js";
 
-export function insertionSort() {
-    let parentDiv = document.getElementById('parent');
-    let bars = Array.from(parentDiv.childNodes);
-    let barHeights = bars.map(bar => parseInt(bar.style.height.slice(0, -2)));
+export function insertionSort(bars, barHeights) {
+   
     console.log(barHeights);
 
     let time = 1;
@@ -30,5 +28,5 @@ export function insertionSort() {
     }
 
     time++;
-    printArray(barHeights, time * MULTIPLIER);
+    printArray(barHeights, "After sorting", time * MULTIPLIER);
 }

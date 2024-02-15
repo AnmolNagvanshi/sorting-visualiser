@@ -1,9 +1,7 @@
 const MS_DELAY_MULTIPLE = 3;
 
-export function bubbleSort() {
-    let parentDiv = document.getElementById('parent');
-    let bars = Array.from(parentDiv.childNodes);
-    let barHeights = bars.map(bar => parseInt(bar.style.height.slice(0, -2)));
+export function bubbleSort(bars, barHeights) {
+    
     let timeModifier = 1;
 
     for(let i = 0; i < bars.length - 1; i++) {

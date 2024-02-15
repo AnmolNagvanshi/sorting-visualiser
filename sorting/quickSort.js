@@ -1,10 +1,7 @@
-import { updateHeightTwo, highlightBars, unhighlightBars } from "./utility.js";
+import { updateHeightTwo, highlightBars, unhighlightBars, swap } from "./utility.js";
 
-export function quickSort() {
-    const parentDiv = document.getElementById("parent");
-    const bars = Array.from(parentDiv.childNodes);
-    const barHeights = bars.map(bar => parseInt(bar.style.height.slice(0, -2)))
-    
+export function quickSort(bars, barHeights) {
+
     sort(bars, barHeights, 0, bars.length - 1);
     console.log(barHeights);
 }
@@ -30,8 +27,6 @@ function partition(bars, barHeights, leftIdx, rightIdx) {
             swap(barHeights, pivotIdx, idx);
             updateHeightTwo(bars[pivotIdx], barHeights[pivotIdx], bars[idx], barHeights[idx], time * 10);
             time++;
-            // bars[pivotIdx].style.height = barHeights[pivotIdx] + "vh";
-            // bars[idx].style.height = barHeights[idx] + "vh";
             unhighlightBars(bars[pivotIdx], bars[idx], time * 10);
             pivotIdx++;
         } else {
