@@ -9,6 +9,33 @@ body {
     overflow: hidden;
 }
 
+.nav {
+    /* background-color: rgb(124, 196, 220); */
+    height: 4vh;
+    display: flex;
+    gap: 20px;
+    /* align-items: center; */
+    /* justify-content: space-between; */
+    /* margin-bottom: 20px; */
+}
+
+.sort-button {
+    /* background-color: aqua; */
+    background-color: rgb(96, 209, 209);
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    /* color: white; */
+}
+
+.sort-button:hover {
+    background-color: aqua;
+}
+
+.sort-button:disabled:hover {
+    background-color: rgb(96, 209, 209);
+}
+
 
 #parent {
     /* background-color: aqua; */

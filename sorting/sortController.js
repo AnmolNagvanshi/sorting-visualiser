@@ -9,20 +9,36 @@ export function handleSort(event) {
     const sortFnName = event.target.id;
     console.log(sortFnName);
 
+    const sortButtons = document.querySelectorAll('.sort-button');
+    sortButtons.forEach((button) => {
+        button.disabled = true;
+        button.classList.remove('hover');
+    });
+
     const parentDiv = document.getElementById('parent');
     const bars = Array.from(parentDiv.childNodes);
     const barHeights = bars.map(bar => parseInt(bar.style.height.slice(0, -2)));
 
+    let timeDelay = 0;
     if(sortFnName === 'bubble')
-        bubbleSort(bars, barHeights);
+        timeDelay = bubbleSort(bars, barHeights);
     else if(sortFnName === 'insertion')
-        insertionSort(bars, barHeights);
+        timeDelay = insertionSort(bars, barHeights);
     else if(sortFnName === 'merge')
-        mergeSort(bars, barHeights);
+        timeDelay = mergeSort(bars, barHeights);
     else if(sortFnName === 'quick')
-        quickSort(bars, barHeights);
+        timeDelay = quickSort(bars, barHeights);
     else if(sortFnName === 'heap')
-        heapSort(bars, barHeights);
+        timeDelay = heapSort(bars, barHeights);
     else
         console.log('Error while handling sort');
+
+    console.log("timeDelay", timeDelay);
+
+    setTimeout(() => {
+        sortButtons.forEach((button) => {
+            button.disabled = false;
+            button.classList.add('hover');
+        });
+    }, timeDelay + 500);
 }

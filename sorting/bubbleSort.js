@@ -29,6 +29,8 @@ export function bubbleSort(bars, barHeights) {
         highlightSortedBar(0);
     }, timeModifier * MS_DELAY_MULTIPLE);
     console.log(barHeights);
+
+    return timeModifier * MS_DELAY_MULTIPLE;
 }
 
 function updateHeight(barHeights, idx, bar1, bar2) {

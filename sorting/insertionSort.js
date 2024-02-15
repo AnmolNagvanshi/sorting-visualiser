@@ -29,4 +29,6 @@ export function insertionSort(bars, barHeights) {
 
     time++;
     printArray(barHeights, "After sorting", time * MULTIPLIER);
+
+    return time * MULTIPLIER;
 }

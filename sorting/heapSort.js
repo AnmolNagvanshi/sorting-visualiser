@@ -32,7 +32,8 @@ export function heapSort(bars, barHeights) {
 
     time++;
     printArray(barHeights, "After Sorting", time * MULTIPLE);
-
+    
+    return time * MULTIPLE;
 }
 
 
